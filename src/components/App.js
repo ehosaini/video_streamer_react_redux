@@ -10,10 +10,10 @@ import Header from './Header';
 
 const App = (props) => {
     return (
-        <div> 
-            <Header />
+        <div className="ui container"> 
             <BrowserRouter>
             <div>
+                <Header />
                 <Route path="/" exact component={StreamList} />
                 <Route path="/admin/streams" exact component={StreamShow} />
                 <Route path="/streams/new" exact component={StreamCreate} />
