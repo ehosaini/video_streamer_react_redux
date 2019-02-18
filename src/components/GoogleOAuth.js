@@ -31,13 +31,11 @@ class GoogleOAuth extends Component {
        }
     }
 
-    onSignInClick = () => {
-        this.auth.signIn();        
-    }
+    onSignInClick = () => this.auth.signIn();        
+    
 
-    onSignOutClick = () => {   
-        this.auth.signOut();   
-    }
+    onSignOutClick = () => this.auth.signOut();   
+    
 
     renderSignInButton(){
         if(this.props.isSignedIn === null){
