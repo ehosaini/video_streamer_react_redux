@@ -13,23 +13,34 @@ class StreamCreate extends React.Component {
     //     );
     // }
 
-    renderInput({ input, label }){ // above is a more verbose way of achieving this - note how input can be returned
+    renderError({ error, touched }) {
+        if(error && touched) {
+            return (
+                <div className="ui error message">
+                    <div className="header">{ error }</div>
+                </div>
+            );
+        }
+    }
+    
+    renderInput = ({ input, label, meta }) => { // above is a more verbose way of achieving this - note how input can be returned
         return (
             <div className="field">
                 <label>{ label }</label>
                 <input {...input} />
+                { this.renderError(meta) }
             </div>
         );
         
     }  
 
-    onSubmit(formValues){
+    onSubmit(formValues) {
 
     }
 
     render() {
         return(
-            <form className="ui form" onSubmit={this.props.handleSubmit(this.onSubmit)}>
+            <form className="ui form error" onSubmit={this.props.handleSubmit(this.onSubmit)}>
                 <Field name="title" component={this.renderInput} label="Enter title"/>
                 <Field name="description" component={this.renderInput} label="Enter description" />
                 <button className="ui button primary">Submit</button>
