@@ -11,6 +11,16 @@ class StreamEdit extends React.Component {
 
     onSubmit = (formValues) => {
         this.props.updateStream(this.props.match.params.id, formValues);
+        console.log(formValues)
+    }
+
+    pickFormFields(stream){
+        return {
+            title: stream && stream.title, 
+            description: stream && stream.description
+        }
+        /* alternatively pass values to the component using lodash like so:
+        initialValues = { _.pick(this.props.stream, 'title', 'description')} */
     }
 
     render(){
@@ -18,7 +28,7 @@ class StreamEdit extends React.Component {
             <div>
                 <h2>Update a Stream</h2> 
                 {/* initialValues attribute is a redux form feature that prepopulates a form with data */}
-                <StreamForm initialValues={this.props.stream} submitForm={this.onSubmit}/>
+                <StreamForm initialValues={ this.props.stream && this.pickFormFields(this.props.stream) } submitForm={this.onSubmit}/>
             </div> 
         );
     }
