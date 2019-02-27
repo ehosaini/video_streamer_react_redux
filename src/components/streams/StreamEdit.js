@@ -11,7 +11,6 @@ class StreamEdit extends React.Component {
 
     onSubmit = (formValues) => {
         this.props.updateStream(this.props.match.params.id, formValues);
-        console.log(formValues)
     }
 
     pickFormFields(stream){

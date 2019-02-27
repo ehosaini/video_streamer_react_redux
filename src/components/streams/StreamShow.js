@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
 const StreamShow = (props) => {
-    return(
-        <div>StreamShow</div>
-    );
+  return (
+    <div>StreamShow</div>
+  )
 }
 
-export default StreamShow;
+export default StreamShow
