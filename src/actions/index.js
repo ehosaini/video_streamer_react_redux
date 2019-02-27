@@ -36,7 +36,8 @@ export const fetchStream = id => async dispatch => {
 }
 
 export const updateStream = (id, formValues) => async dispatch => {
-  const response = await streams.put(`/streams/${id}`, formValues)
+  // making a PATCH reques so that userID field doesn't get overwritten
+  const response = await streams.patch(`/streams/${id}`, formValues)
   dispatch({ type: UPDATE_STREAM, payload: response.data })
   history.push('/') // redirect user
 }
