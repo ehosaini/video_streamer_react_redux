@@ -13,7 +13,7 @@ export default (state = {}, action) => {
     case UPDATE_STREAM:
       return { ...state, [action.payload.id]: action.payload }
     case DELETE_STREAM:
-      const newState = state.delete(action.payload) // payload holds the id of action the stream
+      const newState = delete { ...state }[action.payload] // payload holds the id of action the stream
       return newState
     default:
       return state

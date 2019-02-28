@@ -42,7 +42,8 @@ export const updateStream = (id, formValues) => async dispatch => {
   history.push('/') // redirect user
 }
 
-export const deleteStream = id => async (dispatch) => {
+export const deleteStream = id => async dispatch => {
   await streams.delete(`/streams/${id}`)
-  dispatch({ type: FETCH_STREAMS, payload: id })
+  dispatch({ type: DELETE_STREAM, payload: id })
+  history.push('/') // redirect user
 }
