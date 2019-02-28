@@ -1,9 +1,36 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { fetchStream } from '../../actions'
 
-const StreamShow = (props) => {
-  return (
-    <div>StreamShow</div>
-  )
+class StreamShow extends React.Component {
+  componentDidMount () {
+    this.props.fetchStream(this.props.match.params.id)
+  }
+
+  renderStream (stream) {
+    if (!stream) {
+      return <div>Loading stream .... </div>
+    }
+
+    const { title, description } = stream
+    return (
+      <div>
+        <h1>{title}</h1>
+        <div>{description}</div>
+      </div>
+    )
+  }
+  render () {
+    return (
+      <div>{this.renderStream(this.props.stream)}</div>
+    )
+  }
 }
 
-export default StreamShow
+const mapStateToProps = (state, ownProps) => {
+  return {
+    stream: state.streams[ownProps.match.params.id]
+  }
+}
+
+export default connect(mapStateToProps, { fetchStream })(StreamShow)
